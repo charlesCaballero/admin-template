@@ -7,7 +7,7 @@ const spawn = require("child_process").spawnSync;
 
 async function version(versionType) {
   const { stdout, stderr } = await exec(
-    `npm version ${versionType} --no-git-tag-version --force`
+    `npm version ${versionType} --no-git-tag-version`
   );
   if (stderr) throw stderr;
   return stdout;
@@ -34,6 +34,10 @@ const run = async () => {
       throw new Error("You need to provide a git commit message!");
 
     const npmVersion = await version(versionType);
+
+    // console.log("Something went wrong: " + npmVersion.trim);
+    // console.log("Something went wrong: " + gitMessage.trim());
+
     await spawn("git", ["add", "."], {
       stdio: "inherit",
     });
