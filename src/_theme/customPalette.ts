@@ -9,7 +9,7 @@ export type ThemeColor =
   | "info"
   | "success";
 
-const DefaultPalette = (mode: PaletteMode, themeColor: ThemeColor) => {
+const CustomPalette = (mode: PaletteMode, themeColor: ThemeColor) => {
   // ** Vars
   const lightColor = "58, 53, 65";
   const darkColor = "231, 227, 252";
@@ -17,7 +17,7 @@ const DefaultPalette = (mode: PaletteMode, themeColor: ThemeColor) => {
 
   const primaryGradient = () => {
     if (themeColor === "primary") {
-      return "#67b45c";
+      return "#C6A7FE";
     } else if (themeColor === "secondary") {
       return "#9C9FA4";
     } else if (themeColor === "success") {
@@ -43,9 +43,9 @@ const DefaultPalette = (mode: PaletteMode, themeColor: ThemeColor) => {
     },
     mode: mode,
     primary: {
-      light: "#47BB3D",
-      main: "#3A872C",
-      dark: "#00A000",
+      light: "#9E69FD",
+      main: "#9155FD",
+      dark: "#804BDF",
       contrastText: "#FFF",
     },
     secondary: {
@@ -115,4 +115,4 @@ const DefaultPalette = (mode: PaletteMode, themeColor: ThemeColor) => {
   };
 };
 
-export default DefaultPalette;
+export default CustomPalette;

@@ -10,11 +10,10 @@ import {
 } from "@mui/material";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { DrawerHeader } from "../custom/DrawerHeader";
+import NavHeader from "./Menu/Header";
 
 interface AppDrawerProps {
   open: boolean;
@@ -63,17 +62,17 @@ export default function AppDrawer(props: AppDrawerProps) {
   const theme = useTheme();
   const { open, toogleDrawer } = props;
   return (
-    <Drawer variant="permanent" open={open}>
-      <DrawerHeader>
-        <IconButton onClick={toogleDrawer}>
-          {theme.direction === "rtl" ? (
-            <ChevronRightIcon />
-          ) : (
-            <ChevronLeftIcon />
-          )}
-        </IconButton>
-      </DrawerHeader>
-      <Divider />
+    <Drawer
+      variant="permanent"
+      open={open}
+      sx={{
+        "& .MuiDrawer-paper": {
+          borderRight: 0,
+          backgroundColor: theme.palette.background.default,
+        },
+      }}
+    >
+      <NavHeader />
       <List>
         {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
           <ListItem key={text} disablePadding sx={{ display: "block" }}>

@@ -68,7 +68,7 @@ export default function Notification(props: NotificationProps) {
           <Chip label="6 New" />
         </Box>
         <Divider />
-        <MenuItem divider sx={{ alignItems: "flex-start" }}>
+        <MenuItem divider sx={{ alignItems: "flex-start", py: 2 }}>
           <ListItemAvatar>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
           </ListItemAvatar>
@@ -89,7 +89,7 @@ export default function Notification(props: NotificationProps) {
             }
           />
         </MenuItem>
-        <MenuItem divider sx={{ alignItems: "flex-start" }}>
+        <MenuItem divider sx={{ alignItems: "flex-start", py: 2 }}>
           <ListItemAvatar>
             <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
           </ListItemAvatar>
@@ -110,7 +110,7 @@ export default function Notification(props: NotificationProps) {
             }
           />
         </MenuItem>
-        <MenuItem divider sx={{ alignItems: "flex-start" }}>
+        <MenuItem divider sx={{ alignItems: "flex-start", py: 2 }}>
           <ListItemAvatar>
             <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
           </ListItemAvatar>

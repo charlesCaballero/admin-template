@@ -8,6 +8,7 @@ import React from "react";
 import UserAvatar from "./UserAvatar";
 import Notification from "./Notification";
 import AppTheme from "./AppTheme";
+import { useTheme } from "@mui/material/styles";
 
 // Props needed in the component
 interface AppBarProps {
@@ -16,6 +17,7 @@ interface AppBarProps {
 }
 
 export default function AppBar(props: AppBarProps) {
+  const theme = useTheme();
   const { open, toogleDrawer } = props;
 
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
@@ -37,7 +39,17 @@ export default function AppBar(props: AppBarProps) {
   };
 
   return (
-    <AppBarContainer color="default" position="fixed" open={open}>
+    <AppBarContainer
+      color="default"
+      position="fixed"
+      open={open}
+      sx={{
+        borderRight: 0,
+        backgroundColor: theme.palette.background.default,
+        backgroundImage: "none",
+        pt: theme.spacing(0.8),
+      }}
+    >
       <Toolbar>
         <Box sx={{ flexGrow: 1, display: "flex" }}>
           {/* Show menu icon if drawer is minimized */}

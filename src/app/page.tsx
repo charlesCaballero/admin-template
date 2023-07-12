@@ -1,10 +1,12 @@
+"use client";
 import * as React from "react";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 import AppLayout from "@/_components/layout/AppLayout";
 import { ColorModeContext } from "@/_config/context";
+import CustomTheme from "@/_theme/CustomTheme";
 
 export default function ToggleColorMode() {
   const [mode, setMode] = React.useState<"light" | "dark">("light");
+
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
@@ -14,21 +16,11 @@ export default function ToggleColorMode() {
     []
   );
 
-  const theme = React.useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode,
-        },
-      }),
-    [mode]
-  );
-
   return (
     <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
+      <CustomTheme mode={mode} themeColor="primary">
         <AppLayout />
-      </ThemeProvider>
+      </CustomTheme>
     </ColorModeContext.Provider>
   );
 }
