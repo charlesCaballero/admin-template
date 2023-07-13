@@ -1,6 +1,4 @@
 import Toolbar from "@mui/material/Toolbar";
-import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { AppBarContainer } from "../../custom/AppBarContainer";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
@@ -9,6 +7,8 @@ import UserAvatar from "./UserAvatar";
 import Notification from "./Notification";
 import AppTheme from "./AppTheme";
 import { useTheme } from "@mui/material/styles";
+import Icon from "@mdi/react";
+import { mdiMenu, mdiChevronLeft } from "@mdi/js";
 
 // Props needed in the component
 interface AppBarProps {
@@ -63,7 +63,7 @@ export default function AppBar(props: AppBarProps) {
               ...(open && { display: "none" }),
             }}
           >
-            <MenuIcon />
+            <Icon path={mdiMenu} size={1} />
           </IconButton>
           {/* Show chevron icon if drawer is open */}
           <IconButton
@@ -76,7 +76,7 @@ export default function AppBar(props: AppBarProps) {
               ...(!open && { display: "none" }),
             }}
           >
-            <ChevronLeftIcon />
+            <Icon path={mdiChevronLeft} size={1} />
           </IconButton>
         </Box>
         <AppTheme />

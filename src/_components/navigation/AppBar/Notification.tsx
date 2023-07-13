@@ -12,7 +12,8 @@ import {
   MenuItem,
   Typography,
 } from "@mui/material";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import Icon from "@mdi/react";
+import { mdiBellOutline } from "@mdi/js";
 import React from "react";
 
 interface NotificationProps {
@@ -25,14 +26,14 @@ export default function Notification(props: NotificationProps) {
 
   return (
     <Box sx={{ flexGrow: 0 }}>
-      <IconButton onClick={toogleNotification} sx={{ p: 1 }}>
+      <IconButton color="inherit" onClick={toogleNotification} sx={{ p: 1 }}>
         <Badge
           color="primary"
           overlap="circular"
           variant="dot"
           invisible={false}
         >
-          <NotificationsNoneIcon sx={{ fontSize: 30 }} />
+          <Icon path={mdiBellOutline} size={1} />
         </Badge>
       </IconButton>
       <Menu
@@ -65,7 +66,17 @@ export default function Notification(props: NotificationProps) {
           <Typography fontWeight={"bold"} flexGrow={1} variant={"body1"}>
             Notifications
           </Typography>
-          <Chip label="6 New" />
+          <Chip
+            size="small"
+            color="primary"
+            sx={{
+              height: 20,
+              fontSize: "0.75rem",
+              fontWeight: 500,
+              borderRadius: "10px",
+            }}
+            label="6 New"
+          />
         </Box>
         <Divider />
         <MenuItem divider sx={{ alignItems: "flex-start", py: 2 }}>

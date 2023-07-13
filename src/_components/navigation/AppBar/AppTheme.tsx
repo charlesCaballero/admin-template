@@ -1,6 +1,6 @@
 import { Box, IconButton } from "@mui/material";
-import NightsStayOutlinedIcon from "@mui/icons-material/NightsStayOutlined";
-import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import Icon from "@mdi/react";
+import { mdiWeatherNight, mdiWeatherSunny } from "@mdi/js";
 import React from "react";
 import { useTheme } from "@mui/material/styles";
 import { ColorModeContext } from "@/_config/context";
@@ -11,19 +11,16 @@ export default function AppTheme() {
 
   return (
     <Box sx={{ flexGrow: 0 }}>
-      <IconButton onClick={colorMode.toggleColorMode} sx={{ p: 1 }}>
-        <NightsStayOutlinedIcon
-          sx={{
-            fontSize: 30,
-            ...(theme.palette.mode === "light" && { display: "none" }),
-          }}
-        />
-        <LightModeOutlinedIcon
-          sx={{
-            fontSize: 30,
-            ...(theme.palette.mode === "dark" && { display: "none" }),
-          }}
-        />
+      <IconButton
+        color="inherit"
+        onClick={colorMode.toggleColorMode}
+        sx={{ p: 1 }}
+      >
+        {theme.palette.mode === "light" ? (
+          <Icon path={mdiWeatherNight} size={1} />
+        ) : (
+          <Icon path={mdiWeatherSunny} size={1} />
+        )}
       </IconButton>
     </Box>
   );

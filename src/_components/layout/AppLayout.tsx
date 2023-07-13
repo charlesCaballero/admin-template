@@ -3,12 +3,12 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
-import AppBar from "@/_components/navigation/AppBar/main";
+import AppBar from "@/_components/navigation/AppBar";
 import { DrawerHeader } from "@/_components/custom/DrawerHeader";
 import AppDrawer from "@/_components/navigation/AppDrawer";
 
 export default function AppLayout() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const toogleDrawer = () => {
     setOpen(!open);
@@ -18,7 +18,7 @@ export default function AppLayout() {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar open={open} toogleDrawer={toogleDrawer} />
-      <AppDrawer open={open} toogleDrawer={toogleDrawer} />
+      <AppDrawer open={open} />
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Typography variant="subtitle1">

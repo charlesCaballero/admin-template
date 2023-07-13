@@ -21,7 +21,7 @@ export default function UserAvatar(props: UserAvatarProps) {
     <Box sx={{ flexGrow: 0 }}>
       <IconButton onClick={toogleUserMenu} sx={{ p: 1 }}>
         <Avatar
-          sx={{ bgcolor: "green", width: 40, height: 40 }}
+          sx={{ bgcolor: "green", width: 35, height: 35 }}
           alt="Remy Sharp"
           src="/static/images/avatar/2.jpg"
         />
