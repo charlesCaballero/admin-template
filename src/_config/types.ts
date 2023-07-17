@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export type NavLink = {
+export type NavLinkType = {
   path?: string;
   title: string;
   action?: string;
@@ -8,7 +8,7 @@ export type NavLink = {
   badgeContent?: string;
   externalLink?: boolean;
   openInNewTab?: boolean;
-  icon?: string | string[] | ReactNode;
+  icon?: string;
   badgeColor?:
     | "default"
     | "primary"
@@ -19,9 +19,9 @@ export type NavLink = {
     | "info";
 };
 
-export type NavSectionTitle = {
+export type NavSectionTitleType = {
   sectionTitle: string;
   action?: string;
 };
 
-export type VerticalNavItemsType = (NavLink | NavSectionTitle)[];
+export type NavItemsType = (NavLinkType | NavSectionTitleType)[];

@@ -49,7 +49,7 @@ export default function NavHeader() {
     >
       <Link href="/" passHref style={{ textDecoration: "none" }}>
         <StyledLink>
-          <Image src="/images/logo.png" width={40} height={40} alt="logo" />
+          <Image src="/images/logo3.png" width={40} height={40} alt="logo" />
           <HeaderTitle variant="h6" sx={{ ml: 1, flexGrow: 1 }}>
             {themeConfig.templateName}
           </HeaderTitle>

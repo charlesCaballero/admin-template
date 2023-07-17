@@ -3,9 +3,9 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
-import AppBar from "@/_components/navigation/AppBar";
+import AppBar from "@/_components/interface/AppBar";
 import { DrawerHeader } from "@/_components/custom/DrawerHeader";
-import AppDrawer from "@/_components/navigation/AppDrawer";
+import AppDrawer from "@/_components/interface/AppDrawer";
 
 export default function AppLayout() {
   const [open, setOpen] = React.useState(true);

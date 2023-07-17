@@ -2,6 +2,8 @@ import { drawerWidth } from "@/_config/global";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import NavHeader from "./Header";
+import Navigation from "./Navigation";
+import navItems from "./Navigation/navItems";
 
 interface AppDrawerProps {
   open: boolean;
@@ -60,6 +62,7 @@ export default function AppDrawer(props: AppDrawerProps) {
       }}
     >
       <NavHeader />
+      <Navigation navItems={navItems} />
     </Drawer>
   );
 }
