@@ -10,7 +10,7 @@ import NavLink from "./NavLink";
 import NavSectionTitle from "./NavSectionTitle";
 
 interface Props {
-  navVisible?: boolean;
+  navMinimized?: boolean;
   //   groupActive: string[];
   //   currentActiveGroup: string[];
   navItems: NavItemsType;
@@ -24,13 +24,20 @@ const resolveNavItemComponent = (item: NavLinkType | NavSectionTitleType) => {
 
 const VerticalNavItems = (props: Props) => {
   // ** Props
-  const { navItems } = props;
+  const { navItems, navMinimized } = props;
 
   const RenderMenuItems = navItems?.map(
     (item: NavLinkType | NavSectionTitleType, index: number) => {
       const TagName: any = resolveNavItemComponent(item);
 
-      return <TagName {...props} key={index} item={item} />;
+      return (
+        <TagName
+          {...props}
+          key={index}
+          item={item}
+          navMinimized={navMinimized}
+        />
+      );
     }
   );
 

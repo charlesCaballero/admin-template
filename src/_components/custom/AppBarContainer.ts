@@ -10,7 +10,7 @@ export const AppBarContainer = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })<AppBarProps>(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
-  width: `calc( 100% - ${theme.spacing(8)} )`,
+  width: `calc( 100% - ${theme.spacing(10)} )`,
   boxShadow: "none",
   border: 0,
   transition: theme.transitions.create(["width", "margin"], {

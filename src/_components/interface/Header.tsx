@@ -16,8 +16,13 @@ const MenuHeaderWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   alignItems: "center",
   justifyContent: "space-between",
   paddingRight: theme.spacing(4.5),
+  marginBottom: theme.spacing(2.5),
   transition: "padding .25s ease-in-out",
   minHeight: theme.mixins.toolbar.minHeight,
+  position: "sticky",
+  top: 0,
+  zIndex: 1,
+  backgroundColor: theme.palette.background.default,
 }));
 
 const HeaderTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
@@ -36,9 +41,13 @@ const StyledLink = styled("div")({
   textDecoration: "none",
 });
 
-export default function NavHeader() {
-  // ** Props
+interface NavHeaderProps {
+  open: boolean;
+}
 
+export default function NavHeader(props: NavHeaderProps) {
+  // ** Props
+  const { open } = props;
   // ** Hooks
   const theme = useTheme();
 
@@ -50,7 +59,10 @@ export default function NavHeader() {
       <Link href="/" passHref style={{ textDecoration: "none" }}>
         <StyledLink>
           <Image src="/images/logo3.png" width={40} height={40} alt="logo" />
-          <HeaderTitle variant="h6" sx={{ ml: 1, flexGrow: 1 }}>
+          <HeaderTitle
+            variant="h6"
+            sx={{ ml: 1, flexGrow: 1, display: open ? "block" : "none" }}
+          >
             {themeConfig.templateName}
           </HeaderTitle>
         </StyledLink>

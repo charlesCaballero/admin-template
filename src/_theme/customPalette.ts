@@ -1,6 +1,32 @@
 // ** Type Imports
 import { PaletteMode } from "@mui/material";
 
+declare module "@mui/material/styles" {
+  interface Palette {
+    customColors: {
+      main: string;
+      primaryGradient: string | (() => string);
+      tableHeaderBg: string;
+    };
+  }
+
+  // allow configuration using `createTheme`
+  interface PaletteOptions {
+    customColors?: {
+      main: string;
+      primaryGradient: string | (() => string);
+      tableHeaderBg: string;
+    };
+  }
+}
+
+// @babel-ignore-comment-in-output Update the Button's color prop options
+declare module "@mui/material/Button" {
+  interface ButtonPropsColorOverrides {
+    customColors: true;
+  }
+}
+
 export type ThemeColor =
   | "primary"
   | "secondary"

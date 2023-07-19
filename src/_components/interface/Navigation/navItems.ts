@@ -29,25 +29,21 @@ const navigation: NavItemsType = [
     title: "Storage",
     icon: mdiFilePlusOutline,
     path: "/create-request/storage",
-    openInNewTab: true,
   },
   {
     title: "Withdrawal",
     icon: mdiFileMoveOutline,
     path: "/create-request/withdrawal",
-    openInNewTab: true,
   },
   {
     title: "Return",
     icon: mdiFileRefreshOutline,
     path: "/create-request/return",
-    openInNewTab: true,
   },
   {
     title: "Disposal",
     icon: mdiFileRemoveOutline,
     path: "/create-request/disposal",
-    openInNewTab: true,
   },
   {
     sectionTitle: "Data Management",
@@ -55,11 +51,11 @@ const navigation: NavItemsType = [
   {
     title: "Inventory",
     icon: mdiDatabaseEyeOutline,
-    path: "/typography",
+    path: "/inventory",
   },
   {
     title: "Reports",
-    path: "/icons",
+    path: "/reports",
     icon: mdiFileChartOutline,
   },
   {
@@ -68,25 +64,25 @@ const navigation: NavItemsType = [
   {
     title: "Users",
     icon: mdiAccountTieOutline,
-    path: "/cards",
+    path: "/users",
   },
   {
     title: "Roles",
     icon: mdiAccountTieHatOutline,
-    path: "/tables",
+    path: "/roles",
   },
   {
-    sectionTitle: "Utilities",
+    sectionTitle: "Utility",
   },
   {
     icon: mdiMapSearchOutline,
     title: "Map",
-    path: "/form-layouts",
+    path: "/utility/map",
   },
   {
     icon: mdiBookSearchOutline,
     title: "Glossary",
-    path: "/form-layouts",
+    path: "/utility/glossary",
   },
 ];
 

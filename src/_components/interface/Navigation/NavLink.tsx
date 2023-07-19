@@ -1,8 +1,8 @@
 // ** React Imports
-import { ElementType, ReactNode } from "react";
+import { ElementType } from "react";
 
 // ** Next Imports
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
 
 // ** MUI Imports
@@ -11,35 +11,37 @@ import ListItem from "@mui/material/ListItem";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import Box, { BoxProps } from "@mui/material/Box";
+import Icon from "@mdi/react";
+import { useTheme } from "@mui/material/styles";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemButton, {
-  ListItemButtonProps,
-} from "@mui/material/ListItemButton";
+import ListItemButton from "@mui/material/ListItemButton";
+import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 
 // ** Configs Import
 import themeConfig from "@/_config/themeConfig";
 
 // ** Types
 import { NavLinkType } from "@/_config/types";
-import Icon from "@mdi/react";
 // ** Custom Components Imports
 
 // ** Utils
 
 interface Props {
   item: NavLinkType;
-  navVisible?: boolean;
+  navMinimized?: boolean;
   //   toggleNavVisibility: () => void;
 }
 
 // ** Styled Components
-const MenuNavLink = styled(ListItemButton)<
-  ListItemButtonProps & {
+const MenuNavLink = styled(Link)<
+  LinkProps & {
     component?: ElementType;
     target?: "_blank" | undefined;
   }
 >(({ theme }) => ({
   width: "100%",
+  display: "flex",
+  textDecoration: "none",
   borderTopRightRadius: 100,
   borderBottomRightRadius: 100,
   color: theme.palette.text.primary,
@@ -63,8 +65,26 @@ const MenuItemTextMetaWrapper = styled(Box)<BoxProps>({
   ...(themeConfig.menuTextTruncate && { overflow: "hidden" }),
 });
 
-const NavLink = ({ item, navVisible }: Props) => {
+const NavTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} arrow classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.arrow}`]: {
+    color: theme.palette.primary.light,
+  },
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: theme.palette.primary.light,
+    fontSize: 12,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+    boxShadow: theme.shadows,
+  },
+}));
+
+const NavLink = ({ item, navMinimized }: Props) => {
   // ** Hooks
+  const theme = useTheme();
 
   const IconTag: string = item.icon!;
 
@@ -80,25 +100,39 @@ const NavLink = ({ item, navVisible }: Props) => {
     <ListItem
       disablePadding
       className="nav-link"
-      sx={{ mt: 1.5, px: "0 !important" }}
+      sx={{ px: "0 !important", zIndex: 0 }}
     >
-      <ListItemButton disabled={item.disabled || false}>
-        <Link passHref href={item.path === undefined ? "/" : `${item.path}`}>
+      <NavTooltip
+        title={item.title}
+        placement="right"
+        arrow
+        sx={{ display: navMinimized ? "block" : "none" }}
+      >
+        <ListItemButton
+          disabled={item.disabled || false}
+          sx={{
+            p: 0,
+            mr: 1.5,
+            borderTopRightRadius: 100,
+            borderBottomRightRadius: 100,
+          }}
+        >
           <MenuNavLink
-            component={"a"}
-            className={isNavLinkActive() ? "active" : ""}
+            href={item.path === undefined ? "/" : `${item.path}`}
             {...(item.openInNewTab ? { target: "_blank" } : null)}
+            className={isNavLinkActive() ? "active" : ""}
             onClick={(e) => {
               if (item.path === undefined) {
                 e.preventDefault();
                 e.stopPropagation();
               }
-              if (navVisible) {
+              if (navMinimized) {
                 // toggleNavVisibility();
               }
             }}
             sx={{
-              pl: 5.5,
+              pl: 2.5,
+              py: 1.2,
               ...(item.disabled
                 ? { pointerEvents: "none" }
                 : { cursor: "pointer" }),
@@ -106,15 +140,21 @@ const NavLink = ({ item, navVisible }: Props) => {
           >
             <ListItemIcon
               sx={{
-                mr: 2.5,
                 color: "text.primary",
                 transition: "margin .25s ease-in-out",
+                minWidth: 35,
               }}
             >
-              <Icon path={IconTag} />
+              <Icon
+                path={IconTag}
+                size={1}
+                color={theme.palette.text.primary}
+              />
             </ListItemIcon>
 
-            <MenuItemTextMetaWrapper>
+            <MenuItemTextMetaWrapper
+              sx={{ display: navMinimized ? "none" : "block" }}
+            >
               <Typography
                 {...(themeConfig.menuTextTruncate && { noWrap: true })}
               >
@@ -137,8 +177,8 @@ const NavLink = ({ item, navVisible }: Props) => {
               ) : null}
             </MenuItemTextMetaWrapper>
           </MenuNavLink>
-        </Link>
-      </ListItemButton>
+        </ListItemButton>
+      </NavTooltip>
     </ListItem>
   );
 };
