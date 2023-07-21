@@ -41,7 +41,7 @@ export default function Footer() {
           <Typography sx={{ flexGrow: 1 }}>
             {`Copyright © ${new Date().getFullYear()} PhilHealth Region X`}
           </Typography>
-          <Typography >
+          <Typography color={theme.palette.primary.main}>
             {`version ${version}`}
           </Typography>
         </Box>

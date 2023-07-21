@@ -2,41 +2,17 @@
 import Divider from "@mui/material/Divider";
 import { styled, useTheme } from "@mui/material/styles";
 import Typography, { TypographyProps } from "@mui/material/Typography";
-import MuiListSubheader, {
-  ListSubheaderProps,
-} from "@mui/material/ListSubheader";
 
 // ** Types
 import { NavSectionTitleType } from "@/_config/types";
+import { ListSubheader } from "@/_components/custom/ListSubheader";
+import { TypographyHeaderText } from "@/_components/custom/TypographyHeaderText";
 
 interface Props {
   item: NavSectionTitleType;
   navMinimized: boolean;
 }
 
-// ** Styled Components
-const ListSubheader = styled((props: ListSubheaderProps) => (
-  <MuiListSubheader component="li" {...props} />
-))(({ theme }) => ({
-  lineHeight: 1,
-  display: "flex",
-  position: "relative",
-  marginTop: theme.spacing(3),
-  marginBottom: theme.spacing(1),
-  backgroundColor: "transparent",
-  transition: "padding-left .25s ease-in-out",
-}));
-
-const TypographyHeaderText = styled(Typography)<TypographyProps>(
-  ({ theme }) => ({
-    fontSize: "0.75rem",
-    lineHeight: "normal",
-    letterSpacing: "0.21px",
-    textTransform: "uppercase",
-    color: theme.palette.text.disabled,
-    fontWeight: theme.typography.fontWeightMedium,
-  })
-);
 
 const NavSectionTitle = (props: Props) => {
   // ** Props
