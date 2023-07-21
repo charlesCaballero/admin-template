@@ -2,6 +2,7 @@
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import { Typography } from "@mui/material";
+import {version} from '../../../package.json';
 
 export default function Footer() {
   // ** Hook
@@ -25,7 +26,7 @@ export default function Footer() {
           width: "100%",
           borderTopLeftRadius: 14,
           borderTopRightRadius: 14,
-          padding: theme.spacing(4, 6),
+          paddingTop: theme.spacing(1),
           ...{ "@media (min-width:1440px)": { maxWidth: 1440 } },
         }}
       >
@@ -37,8 +38,11 @@ export default function Footer() {
             justifyContent: "space-between",
           }}
         >
-          <Typography sx={{ mr: 2 }}>
+          <Typography sx={{ flexGrow: 1 }}>
             {`Copyright © ${new Date().getFullYear()} PhilHealth Region X`}
+          </Typography>
+          <Typography >
+            {`version ${version}`}
           </Typography>
         </Box>
       </Box>

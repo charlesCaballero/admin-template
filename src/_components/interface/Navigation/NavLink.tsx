@@ -148,7 +148,7 @@ const NavLink = ({ item, navMinimized }: Props) => {
               <Icon
                 path={IconTag}
                 size={1}
-                color={theme.palette.text.primary}
+                color={isNavLinkActive() ?theme.palette.common.white:theme.palette.text.primary }
               />
             </ListItemIcon>
 

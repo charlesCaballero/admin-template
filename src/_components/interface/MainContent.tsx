@@ -15,8 +15,11 @@ export default function MainContent(props: ContentProps) {
       component={"main"}
       display={"flex"}
       flexDirection={"column"}
-      p={3}
+      px={3}
+      pt={3}
+      pb={1}
       flexGrow={1}
+      minHeight={"100vh"}
     >
       <DrawerHeader />
       <Box flexGrow={1} width={"100%"} justifyContent={"space-between"}>
