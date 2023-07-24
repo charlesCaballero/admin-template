@@ -1,3 +1,4 @@
+import ThemeProvider from "@/_components/layout/ThemeProvider";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -17,7 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ThemeProvider>
+        {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
