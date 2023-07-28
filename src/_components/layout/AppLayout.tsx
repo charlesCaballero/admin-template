@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@/_components/interface/AppBar";
 import AppDrawer from "@/_components/interface/AppDrawer";
 import MainContent from "../interface/MainContent";
@@ -20,7 +19,6 @@ export default function AppLayout(props: AppLayoutProps) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
       <AppBar open={open} toogleDrawer={toogleDrawer} />
       <AppDrawer open={open} />
       <MainContent>{children}</MainContent>

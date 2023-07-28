@@ -2,7 +2,9 @@
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import { Typography } from "@mui/material";
-import {version} from '../../../package.json';
+import packageInfo from "../../../package.json";
+
+const version = packageInfo.version;
 
 export default function Footer() {
   // ** Hook

@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import React from "react";
 import custompalette from "@/_theme/customPalette";
+import customShadows from "@/_theme/customShadows";
 import customtypography from "@/_theme/customTypography";
 
 interface CustomThemeProps {
@@ -15,6 +16,7 @@ interface CustomThemeProps {
 export default function CustomTheme(props: CustomThemeProps) {
   const { children, mode, themeColor } = props;
   const palette = custompalette(mode, themeColor);
+  const shadows = customShadows(mode);
   const updatePalette = React.useMemo(
     () =>
       createTheme({
@@ -29,6 +31,7 @@ export default function CustomTheme(props: CustomThemeProps) {
       createTheme({
         palette: palette,
         typography: typography,
+        shadows: shadows,
         mixins: {
           toolbar: {
             minHeight: 64,

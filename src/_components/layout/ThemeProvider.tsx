@@ -3,16 +3,17 @@ import * as React from "react";
 import AppLayout from "@/_components/layout/AppLayout";
 import { ColorModeContext } from "@/_config/context";
 import CustomTheme from "@/_theme/CustomTheme";
+import CssBaseline from "@mui/material/CssBaseline";
 import { usePathname } from "next/navigation";
 
 interface ThemeProviderProps {
-    children: React.ReactNode
+  children: React.ReactNode;
 }
 
 const loginPath = "/login";
 
 export default function ThemeProvider(props: ThemeProviderProps) {
-    const {children}  = props;
+  const { children } = props;
   const [mode, setMode] = React.useState<"light" | "dark">("light");
 
   const colorMode = React.useMemo(
@@ -24,7 +25,7 @@ export default function ThemeProvider(props: ThemeProviderProps) {
     []
   );
 
-  const isLinkLogin= () => {
+  const isLinkLogin = () => {
     if (usePathname() === loginPath) {
       return true;
     } else {
@@ -35,12 +36,8 @@ export default function ThemeProvider(props: ThemeProviderProps) {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <CustomTheme mode={mode} themeColor="primary">
-        {isLinkLogin()?children:
-        (
-        <AppLayout >
-            {children}
-        </AppLayout>
-        )}
+        <CssBaseline />
+        {isLinkLogin() ? children : <AppLayout>{children}</AppLayout>}
       </CustomTheme>
     </ColorModeContext.Provider>
   );
