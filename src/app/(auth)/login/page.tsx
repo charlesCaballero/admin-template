@@ -49,7 +49,7 @@ const Card = styled(MuiCard)<CardProps>(({ theme }) => ({
 const LinkStyled = styled("p")(({ theme }) => ({
   fontSize: "0.875rem",
   textDecoration: "none",
-  color: theme.palette.primary.main,
+  color: theme.palette.text.secondary,
 }));
 
 const FormControlLabel = styled(MuiFormControlLabel)<FormControlLabelProps>(
@@ -105,7 +105,12 @@ export default function Login() {
               justifyContent: "center",
             }}
           >
-            <Image src="/images/logo3.png" width={65} height={65} alt="logo" />
+            <Image
+              src="/images/pwms_logo.png"
+              width={65}
+              height={65}
+              alt="logo"
+            />
 
             <Typography
               variant="h6"
@@ -121,7 +126,7 @@ export default function Login() {
               {themeConfig.templateName}
             </Typography>
           </Box>
-          <Box sx={{ mb: 6 }}>
+          <Box sx={{ mb: 3 }}>
             <Typography
               variant="h5"
               sx={{ fontWeight: 600, marginBottom: 1.5 }}
@@ -143,11 +148,15 @@ export default function Login() {
               id="userId"
               label="User ID"
               sx={{ marginBottom: 2 }}
+              color="secondary"
             />
             <FormControl fullWidth>
-              <InputLabel htmlFor="auth-login-password">Password</InputLabel>
+              <InputLabel color="secondary" htmlFor="auth-login-password">
+                Password
+              </InputLabel>
               <OutlinedInput
                 label="Password"
+                color="secondary"
                 value={values.password}
                 id="auth-login-password"
                 onChange={handleChange("password")}
@@ -172,7 +181,7 @@ export default function Login() {
             </FormControl>
             <Box
               sx={{
-                mb: 4,
+                mb: 2,
                 display: "flex",
                 alignItems: "center",
                 flexWrap: "wrap",

@@ -58,7 +58,12 @@ export default function NavHeader(props: NavHeaderProps) {
     >
       <Link href="/" passHref style={{ textDecoration: "none" }}>
         <StyledLink>
-          <Image src="/images/logo3.png" width={40} height={40} alt="logo" />
+          <Image
+            src="/images/pwms_logo.png"
+            width={40}
+            height={40}
+            alt="logo"
+          />
           <HeaderTitle
             variant="h6"
             sx={{ ml: 1, flexGrow: 1, display: open ? "block" : "none" }}

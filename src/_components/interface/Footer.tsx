@@ -40,10 +40,14 @@ export default function Footer() {
             justifyContent: "space-between",
           }}
         >
-          <Typography sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="subtitle2"
+            sx={{ flexGrow: 1 }}
+            color={theme.palette.text.secondary}
+          >
             {`Copyright © ${new Date().getFullYear()} PhilHealth Region X`}
           </Typography>
-          <Typography color={theme.palette.primary.main}>
+          <Typography variant="subtitle2" color={theme.palette.text.secondary}>
             {`version ${version}`}
           </Typography>
         </Box>

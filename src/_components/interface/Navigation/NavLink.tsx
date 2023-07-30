@@ -28,7 +28,6 @@ interface Props {
   //   toggleNavVisibility: () => void;
 }
 
-
 const NavLink = ({ item, navMinimized }: Props) => {
   // ** Hooks
   const theme = useTheme();
@@ -95,7 +94,11 @@ const NavLink = ({ item, navMinimized }: Props) => {
               <Icon
                 path={IconTag}
                 size={1}
-                color={isNavLinkActive() ?theme.palette.common.white:theme.palette.text.primary }
+                color={
+                  isNavLinkActive()
+                    ? theme.palette.common.black
+                    : theme.palette.text.primary
+                }
               />
             </ListItemIcon>
 

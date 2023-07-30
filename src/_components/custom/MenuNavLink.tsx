@@ -21,6 +21,6 @@ export const MenuNavLink = styled(Link)<
     backgroundImage: `linear-gradient(98deg, ${theme.palette.customColors.primaryGradient}, ${theme.palette.primary.main} 94%)`,
   },
   "&.active .MuiTypography-root, &.active .MuiSvgIcon-root": {
-    color: `${theme.palette.common.white} !important`,
+    color: `${theme.palette.common.black} !important`,
   },
 }));
