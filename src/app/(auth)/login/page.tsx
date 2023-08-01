@@ -4,26 +4,12 @@ import Image from "next/image";
 
 // ** MUI Imports
 import { styled, useTheme } from "@mui/material/styles";
-import Box, { BoxProps } from "@mui/material/Box";
-import {
-  CardContent,
-  Typography,
-} from "@mui/material";
+import Box from "@mui/material/Box";
+import { CardContent, Typography } from "@mui/material";
 import MuiCard, { CardProps } from "@mui/material/Card";
 import themeConfig from "@/_config/themeConfig";
-import LoginForm from "@/_components/page/login/LoginForm";
-
-const BoxLayout = styled(Box)<BoxProps>(({ theme }) => ({
-  height: "100vh",
-  display: "flex",
-  minHeight: "100vh",
-  alignItems: "center",
-  justifyContent: "center",
-  padding: theme.spacing(5),
-  backgroundImage: "url(/images/background4.jpg)",
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "cover",
-}));
+import LoginForm from "@/_components/forms/LoginForm";
+import { LoginContentWrapper } from "@/_components/custom/LoginContentWrapper";
 
 // ** Styled Components
 const Card = styled(MuiCard)<CardProps>(({ theme }) => ({
@@ -32,12 +18,11 @@ const Card = styled(MuiCard)<CardProps>(({ theme }) => ({
   position: "absolute",
 }));
 
-
 export default function Login() {
   const theme = useTheme();
-  
+
   return (
-    <BoxLayout component={"main"}>
+    <LoginContentWrapper>
       <Card sx={{ zIndex: 1 }}>
         <CardContent
           sx={{
@@ -58,7 +43,6 @@ export default function Login() {
               height={65}
               alt="logo"
             />
-
             <Typography
               variant="h6"
               sx={{
@@ -84,9 +68,9 @@ export default function Login() {
               Please sign-in to your account and start the adventure
             </Typography>
           </Box>
-          <LoginForm/>
+          <LoginForm />
         </CardContent>
       </Card>
-    </BoxLayout>
+    </LoginContentWrapper>
   );
 }

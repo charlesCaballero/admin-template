@@ -1,16 +1,8 @@
 // ** Icon imports
 import {
   mdiViewDashboardOutline,
-  mdiFilePlusOutline,
-  mdiFileMoveOutline,
-  mdiFileRefreshOutline,
-  mdiFileRemoveOutline,
-  mdiDatabaseEyeOutline,
-  mdiFileChartOutline,
-  mdiAccountTieOutline,
-  mdiAccountTieHatOutline,
-  mdiMapSearchOutline,
-  mdiBookSearchOutline,
+  mdiCardMultipleOutline,
+  mdiLockOutline,
 } from "@mdi/js";
 
 // ** Type import
@@ -23,66 +15,21 @@ const navigation: NavItemsType = [
     path: "/",
   },
   {
-    sectionTitle: "Create Request",
+    sectionTitle: "Components",
   },
   {
-    title: "Storage",
-    icon: mdiFilePlusOutline,
-    path: "/create-request/storage",
+    title: "Dialogs",
+    icon: mdiCardMultipleOutline,
+    path: "/dialogs",
   },
   {
-    title: "Withdrawal",
-    icon: mdiFileMoveOutline,
-    path: "/create-request/withdrawal",
+    sectionTitle: "Pages",
   },
   {
-    title: "Return",
-    icon: mdiFileRefreshOutline,
-    path: "/create-request/return",
-  },
-  {
-    title: "Disposal",
-    icon: mdiFileRemoveOutline,
-    path: "/create-request/disposal",
-  },
-  {
-    sectionTitle: "Data Management",
-  },
-  {
-    title: "Inventory",
-    icon: mdiDatabaseEyeOutline,
-    path: "/inventory",
-  },
-  {
-    title: "Reports",
-    path: "/reports",
-    icon: mdiFileChartOutline,
-  },
-  {
-    sectionTitle: "User Management",
-  },
-  {
-    title: "Users",
-    icon: mdiAccountTieOutline,
-    path: "/users",
-  },
-  {
-    title: "Roles",
-    icon: mdiAccountTieHatOutline,
-    path: "/roles",
-  },
-  {
-    sectionTitle: "Utility",
-  },
-  {
-    icon: mdiMapSearchOutline,
-    title: "Map",
-    path: "/utility/map",
-  },
-  {
-    icon: mdiBookSearchOutline,
-    title: "Glossary",
-    path: "/utility/glossary",
+    title: "Login",
+    icon: mdiLockOutline,
+    path: "/login",
+    openInNewTab: true,
   },
 ];
 
