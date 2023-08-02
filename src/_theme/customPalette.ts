@@ -24,6 +24,7 @@ declare module "@mui/material/styles" {
 declare module "@mui/material/Button" {
   interface ButtonPropsColorOverrides {
     customColors: true;
+    tertiary: true;
   }
 }
 
@@ -83,6 +84,12 @@ const CustomPalette = (mode: PaletteMode, themeColor: ThemeColor) => {
       light: "#54b172",
       main: "#4c9f67",
       dark: "#438e5b",
+      contrastText: "#FFF",
+    },
+    tertiary: {
+      light: "#9C9FA4",
+      main: "#8A8D93",
+      dark: "#777B82",
       contrastText: "#FFF",
     },
     success: {

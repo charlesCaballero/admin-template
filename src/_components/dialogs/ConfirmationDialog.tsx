@@ -1,62 +1,87 @@
 import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import React from "react";
+import { mdiAlertCircleOutline } from "@mdi/js";
 
-type ConfirmationType = "success" | "warning" | "error" | "information";
+type ConfirmationType = "success" | "warning" | "error" | "info";
 
 interface ConfirmationDialogProps {
-    variant: ConfirmationType,
-    onClose: (conf: boolean) => void,
-    label: string;
+  variant: ConfirmationType;
+  onClose: (conf: boolean) => void;
+  label: string;
 }
 
+import { useTheme } from "@mui/material/styles";
+import Icon from "@mdi/react";
+import Box from "@mui/material/Box";
+import { AppDialog } from "../custom/AppDialog";
 
+export default function ConfirmationDialog(props: ConfirmationDialogProps) {
+  const { variant, onClose, label } = props;
 
-export default function ConfirmationDialog (props: ConfirmationDialogProps) {
-    const {variant, onClose, label} = props;
+  const theme = useTheme();
 
-    const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const iconColor =
+    variant === "warning"
+      ? theme.palette.warning.main
+      : variant === "success"
+      ? theme.palette.success.main
+      : variant === "error"
+      ? theme.palette.error.main
+      : variant === "info"
+      ? theme.palette.info.main
+      : theme.palette.primary.main;
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
-    const handleClose = (conf:boolean) => {
-        setOpen(false);
-        onClose(conf);
-    };
+  const handleClose = (conf: boolean) => {
+    setOpen(false);
+    onClose(conf);
+  };
 
-    return (
+  return (
     <div>
       <Button variant="contained" onClick={handleClickOpen}>
         {label}
       </Button>
-      <Dialog
+      <AppDialog
         open={open}
-        onClose={()=>handleClose(false)}
+        onClose={() => handleClose(false)}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
-        </DialogTitle>
+        <Box textAlign={"center"}>
+          <Icon path={mdiAlertCircleOutline} size={4} color={iconColor} />
+        </Box>
+        <DialogTitle id="alert-dialog-title">{"Are you sure?"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Let Google help apps determine location. This means sending anonymous
-            location data to Google, even when no apps are running.
+            You won't be able to revert this action.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button variant="contained" onClick={()=>handleClose(false)}>Disagree</Button>
-          <Button variant="contained" onClick={()=>handleClose(true)} autoFocus>
-            Agree
+          <Button
+            variant="contained"
+            onClick={() => handleClose(true)}
+            autoFocus
+          >
+            Confirm
+          </Button>
+          <Button
+            variant="outlined"
+            color={"tertiary"}
+            onClick={() => handleClose(false)}
+          >
+            Cancel
           </Button>
         </DialogActions>
-      </Dialog>
+      </AppDialog>
     </div>
-    )
+  );
 }
