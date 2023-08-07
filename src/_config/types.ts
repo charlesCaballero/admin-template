@@ -25,3 +25,5 @@ export type NavSectionTitleType = {
 };
 
 export type NavItemsType = (NavLinkType | NavSectionTitleType)[];
+
+export type DialogType = "success" | "warning" | "error" | "info";

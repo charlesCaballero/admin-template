@@ -3,6 +3,7 @@ import * as React from "react";
 
 import { Box, Button, Typography } from "@mui/material";
 import ConfirmationDialog from "@/_components/dialogs/ConfirmationDialog";
+import FormDialog from "@/_components/dialogs/FormDialog";
 
 export default function Dialogs() {
   const handleOnClose = () => {};
@@ -18,7 +19,12 @@ export default function Dialogs() {
         />
       </Box>
       <Box p={1}>
-        <Button variant="contained">Form Dialog</Button>
+        <FormDialog
+          title="Add User"
+          context="Create new user to use your awesome app."
+          onClose={handleOnClose}
+          label="Open Form"
+        />
       </Box>
     </Box>
   );

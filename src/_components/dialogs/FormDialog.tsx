@@ -1,32 +1,26 @@
 import Button from "@mui/material/Button";
-import DialogActions from "@mui/material/DialogActions";
+import { AppDialog } from "../custom/AppDialog";
+import Box from "@mui/material/Box";
+import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import React from "react";
-import { useTheme } from "@mui/material/styles";
 import Icon from "@mdi/react";
-import { mdiAlertCircleOutline } from "@mdi/js";
-import Box from "@mui/material/Box";
-import { AppDialog } from "../custom/AppDialog";
+import { mdiClose } from "@mdi/js";
+import IconButton from "@mui/material/IconButton";
 import { DialogProps } from "@/_config/interfaces";
+import React from "react";
+import DialogActions from "@mui/material/DialogActions";
+import LoginForm from "../forms/LoginForm";
 
-export default function ConfirmationDialog(props: DialogProps) {
-  const { variant = "warning", onClose, label } = props;
+interface FormDialogProps extends DialogProps {
+  title: string;
+  context?: string;
+}
 
-  const theme = useTheme();
+export default function FormDialog(props: FormDialogProps) {
+  const { onClose, label, title, context } = props;
 
   const [open, setOpen] = React.useState(false);
-  const iconColor =
-    variant === "warning"
-      ? theme.palette.warning.main
-      : variant === "success"
-      ? theme.palette.success.main
-      : variant === "error"
-      ? theme.palette.error.main
-      : variant === "info"
-      ? theme.palette.info.main
-      : theme.palette.primary.main;
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -48,16 +42,26 @@ export default function ConfirmationDialog(props: DialogProps) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <Box textAlign={"center"}>
-          <Icon path={mdiAlertCircleOutline} size={4} color={iconColor} />
-        </Box>
-        <DialogTitle id="alert-dialog-title" className="confirmation-dialog">
-          {"Are you sure?"}
+        <IconButton
+          aria-label="close"
+          onClick={() => handleClose(false)}
+          sx={{
+            position: "absolute",
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <Icon path={mdiClose} size={1} />
+        </IconButton>
+        <DialogTitle id="alert-dialog-title" className="form-dialog">
+          {title}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            You won't be able to revert this action.
+            {context}
           </DialogContentText>
+          <LoginForm />
         </DialogContent>
         <DialogActions>
           <Button
@@ -65,7 +69,7 @@ export default function ConfirmationDialog(props: DialogProps) {
             onClick={() => handleClose(true)}
             autoFocus
           >
-            Confirm
+            Save
           </Button>
           <Button
             variant="outlined"
