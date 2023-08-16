@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import AppBar from "@/_components/interface/AppBar";
 import AppDrawer from "@/_components/interface/AppDrawer";
 import MainContent from "../interface/MainContent";
-import LinearLoader from "../loader/LinearLoader";
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -20,9 +19,9 @@ export default function AppLayout(props: AppLayoutProps) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <LinearLoader />
+      {/* <LinearLoader start={loading} /> */}
       <AppBar open={open} toogleDrawer={toogleDrawer} />
-      <AppDrawer open={open} />
+      <AppDrawer open={open}  />
       <MainContent>{children}</MainContent>
     </Box>
   );

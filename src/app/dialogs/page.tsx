@@ -1,11 +1,12 @@
 "use client";
 import * as React from "react";
 
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import ConfirmationDialog from "@/_components/dialogs/ConfirmationDialog";
 import FormDialog from "@/_components/dialogs/FormDialog";
 
-export default function Dialogs() {
+export default async function Dialogs() {
+
   const handleOnClose = () => {};
 
   return (
