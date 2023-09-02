@@ -15,6 +15,7 @@ const loginPath = "/login";
 export default function ThemeProvider(props: ThemeProviderProps) {
   const { children } = props;
   const [mode, setMode] = React.useState<"light" | "dark">("light");
+  const pathname = usePathname();
 
   const colorMode = React.useMemo(
     () => ({
@@ -26,7 +27,7 @@ export default function ThemeProvider(props: ThemeProviderProps) {
   );
 
   const isLinkLogin = () => {
-    if (usePathname() === loginPath) {
+    if (pathname === loginPath) {
       return true;
     } else {
       return false;

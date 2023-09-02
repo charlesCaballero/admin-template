@@ -56,7 +56,7 @@ export default function ConfirmationDialog(props: DialogProps) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            You won't be able to revert this action.
+            You won&apos;t be able to revert this action.
           </DialogContentText>
         </DialogContent>
         <DialogActions>

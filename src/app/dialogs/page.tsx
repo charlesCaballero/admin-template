@@ -5,7 +5,7 @@ import { Box, Typography } from "@mui/material";
 import ConfirmationDialog from "@/_components/dialogs/ConfirmationDialog";
 import FormDialog from "@/_components/dialogs/FormDialog";
 
-export default async function Dialogs() {
+export default function Dialogs() {
 
   const handleOnClose = () => {};
 

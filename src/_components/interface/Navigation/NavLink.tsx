@@ -31,11 +31,12 @@ interface Props {
 const NavLink = ({ item, navMinimized }: Props) => {
   // ** Hooks
   const theme = useTheme();
+  const pathname = usePathname();
 
   const IconTag: string = item.icon!;
 
   const isNavLinkActive = () => {
-    if (usePathname() === item.path) {
+    if (pathname === item.path) {
       return true;
     } else {
       return false;
