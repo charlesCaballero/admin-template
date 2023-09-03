@@ -19,9 +19,8 @@ export default function AppLayout(props: AppLayoutProps) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      {/* <LinearLoader start={loading} /> */}
       <AppBar open={open} toogleDrawer={toogleDrawer} />
-      <AppDrawer open={open}  />
+      <AppDrawer open={open} />
       <MainContent>{children}</MainContent>
     </Box>
   );

@@ -3,6 +3,23 @@ import * as React from "react";
 
 import { Box, Typography } from "@mui/material";
 
+import { NextPageContext } from "next";
+import apiClient from "@/_utils/apiClient";
+import { useRouter } from "next/navigation";
+
+Dashboard.getInitialProps = async (ctx: NextPageContext) => {
+  const router = useRouter();
+
+  apiClient
+    .post("checkauthorization")
+    .then((result) => {
+      return { res: result };
+    })
+    .catch((error) => {
+      router.push("/login", { scroll: false });
+    });
+};
+
 export default function Dashboard() {
   return (
     <Box>
